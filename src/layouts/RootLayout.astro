@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import { AstroFont } from "astro-font";
 ---
 
 <!doctype html>
@@ -10,8 +11,30 @@ import "@/styles/global.css";
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
     <title>kingsonseang's space</title>
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: "Space Grotesk",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
+          preload: true,
+          display: "swap",
+          fallback: "sans-serif",
+        },
+        {
+          src: [],
+          name: "Plus Jakarta Sans",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap",
+          preload: true,
+          display: "swap",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
   </head>
-  <body class='p-2'>
+  <body class='min-h-[100svh] p-4 lg:p-6'>
     <slot />
   </body>
-</html> 
+</html>
