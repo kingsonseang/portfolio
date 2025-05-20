@@ -20,7 +20,11 @@ export default function Header() {
         <div className="flex items-center gap-4 rounded-full bg-white/50 p-1">
           <span className="pl-5 text-sm">{email}</span>
 
-          <Button onClick={copyToClipboard} className="relative cursor-pointer">
+          <Button
+            onClick={copyToClipboard}
+            className="relative cursor-pointer"
+            aria-label="Copy my email to clipboard"
+          >
             <AnimatePresence mode="wait">
               {copied ? (
                 <motion.span
@@ -48,7 +52,7 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4 rounded-full bg-white/50 p-1">
-          <Button asChild>
+          <Button asChild aria-label="view my cv">
             <a href={cv}>CV</a>
           </Button>
         </div>
@@ -91,6 +95,7 @@ export default function Header() {
             key={index}
             href={social.url}
             target="_blank"
+            aria-label={`Visit my ${social.platform} profile`}
             className="text-secondary/50 hover:text-secondary/70 transition-colors [&_svg]:stroke-1"
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}

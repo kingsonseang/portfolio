@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import { AstroFont } from "astro-font";
+import { LoadingProvider } from "@/providers/loading";
 ---
 
 <!doctype html>
@@ -35,6 +36,8 @@ import { AstroFont } from "astro-font";
     />
   </head>
   <body class='min-h-[100svh] p-4 lg:p-6'>
-    <slot />
+    <LoadingProvider client:load>
+      <slot />
+    </LoadingProvider>
   </body>
 </html>
