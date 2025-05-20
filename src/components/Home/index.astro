@@ -1,0 +1,26 @@
+---
+import Header from "./Header";
+import { Button } from "@/components/ui/button"
+---
+
+<div>
+  <div
+    class='flex flex-col bg-stone-50 rounded-[4rem] min-h-[70svh] p-16 space-y-10'
+  >
+    <Header client:load />
+
+    <div
+      class='flex-1 flex flex-col justify-center items-center text-center py-8 space-y-8 max-w-2xl mx-auto'
+    >
+      <img src='/headshot.png' class='size-32 rounded-full ring-4 ring-white' />
+      <p
+        class='text-6xl bg-clip-text bg-gradient-to-br from-stone-900 from-50% to-transparent text-transparent'
+      >
+        Building digital products, brands, and experience.
+      </p>
+	  <Button>
+		See latest projects
+	  </Button>
+    </div>
+  </div>
+</div>
