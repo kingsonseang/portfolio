@@ -1,0 +1,24 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Home/Header";
+import AboutContent from "@/content/about.mdx";
+---
+
+<RootLayout>
+  <Layout>
+    <div class='rounded-[4rem] bg-[hsl(0,0%,96%)]'>
+      <div
+        class='flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12'
+      >
+        <Header client:load />
+
+        <div class='container mx-auto max-w-4xl px-4 py-8'>
+          <div class='prose prose-lg dark:prose-invert max-w-none'>
+            <AboutContent />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Layout>
+</RootLayout>

@@ -3,9 +3,9 @@ import Header from "./Header";
 import { AnimatedButton } from "@/components/ui/animated-button";
 ---
 
-<div>
+<div class='rounded-[4rem] bg-[hsl(0,0%,96%)]'>
   <div
-    class='flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#f6f6f6] p-6 md:p-8 lg:p-10 xl:p-12'
+    class='flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12'
   >
     <Header client:load />
 
@@ -14,7 +14,7 @@ import { AnimatedButton } from "@/components/ui/animated-button";
     >
       <div class='group relative'>
         <img
-          src='/headshot.png'
+          src='/images/headshot.png'
           alt="Solomon Momoh's headshot"
           class='size-32 rounded-full ring-4 ring-white grayscale-75'
         />
@@ -32,4 +32,6 @@ import { AnimatedButton } from "@/components/ui/animated-button";
       <AnimatedButton variant='secondary' client:load>See latest projects</AnimatedButton>
     </div>
   </div>
+
+  <div class='p-6 md:p-8 lg:p-10 xl:p-16'></div>
 </div>

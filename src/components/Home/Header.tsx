@@ -56,6 +56,15 @@ export default function Header() {
             <a href={cv}>CV</a>
           </Button>
         </div>
+
+        <nav className="flex items-center gap-4 rounded-full bg-white/50 p-1">
+          <Button asChild variant="ghost" aria-label="About me">
+            <a href="/about">About</a>
+          </Button>
+          <Button asChild variant="ghost" aria-label="View my projects">
+            <a href="/projects">Projects</a>
+          </Button>
+        </nav>
       </div>
 
       <div className="flex space-x-3.5 max-md:hidden">
