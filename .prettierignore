@@ -1,0 +1,19 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Environment variables
+.env*
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

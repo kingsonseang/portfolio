@@ -1,0 +1,54 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Home/Header";
+// import AboutContent from "@/content/about.mdx";
+
+const email = import.meta.env.PUBLIC_EMAIL || "me@kingsonseang.com";
+---
+
+<RootLayout>
+  <Layout>
+    <div class="max-h-[80svh] rounded-[4rem] bg-[hsl(0,0%,96%)]">
+      <div
+        class="flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
+      >
+        <Header client:load />
+
+        <div class="container mx-auto max-w-4xl px-4 py-8">
+          <!-- <div class='prose prose-lg dark:prose-invert max-w-none'>
+            <AboutContent />
+          </div> -->
+
+          <div class="flex flex-col items-center justify-center space-y-6 py-12 text-center">
+            <h1 class="text-secondary/80 text-4xl font-bold md:text-5xl">Coming Soon</h1>
+            <p class="text-secondary/60 max-w-2xl text-lg md:text-xl">
+              This page is currently under construction. In the meantime, feel free to reach out—I'd
+              love to chat over coffee, even virtually! ☕
+            </p>
+            <a
+              href={`mailto:${email}`}
+              class="bg-secondary/10 hover:bg-secondary/20 text-secondary/70 inline-flex items-center gap-2 rounded-full px-6 py-3 transition-colors duration-200"
+            >
+              Get in touch
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Layout>
+</RootLayout>
