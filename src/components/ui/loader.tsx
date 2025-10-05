@@ -11,7 +11,7 @@ export function Loader() {
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#f6f6f6]"
     >
       <div className="flex flex-col items-center gap-4">
-        <div className="relative size-16">
+        <div className="relative size-16 grid place-content-center">
           <Loader2 className="animate-spin stroke-1" />
         </div>
       </div>

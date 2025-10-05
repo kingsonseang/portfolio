@@ -1,4 +1,5 @@
 import * as React from "react";
+import ClickSpark from "@/components/ClickSpark";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Twitter } from "lucide-react";
@@ -20,35 +21,43 @@ export default function Header() {
         <div className="flex items-center gap-4 rounded-full bg-white/50 p-1">
           <span className="pl-5 text-sm">{email}</span>
 
-          <Button
-            onClick={copyToClipboard}
-            className="relative cursor-pointer"
-            aria-label="Copy my email to clipboard"
+          <ClickSpark
+            sparkColor="#000"
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
           >
-            <AnimatePresence mode="wait">
-              {copied ? (
-                <motion.span
-                  key="copied"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Copied!
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="copy"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Copy
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </Button>
+            <Button
+              onClick={copyToClipboard}
+              className="relative cursor-pointer"
+              aria-label="Copy my email to clipboard"
+            >
+              <AnimatePresence mode="wait">
+                {copied ? (
+                  <motion.span
+                    key="copied"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Copied!
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="copy"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Copy
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </Button>
+          </ClickSpark>
         </div>
 
         <div className="flex items-center gap-4 rounded-full bg-white/50 p-1">

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button, type ButtonProps } from "./button";
 import { cn } from "@/lib/utils";
 
-export function AnimatedButton({ children, className, ...props }: ButtonProps) {
+export function AnimatedButton({ children, className, ...props }: React.ComponentProps<ButtonProps>) {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
