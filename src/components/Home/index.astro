@@ -3,13 +3,15 @@ import Header from "./Header";
 import Clients from "./Clients.astro";
 import { AnimatedButton } from "@/components/ui/animated-button";
 import { Image } from 'astro:assets';
+
+const currentPath = Astro.url.pathname;
 ---
 
 <div class="rounded-[4rem] bg-[#f5f5f5]">
   <div
     class="flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
   >
-    <Header client:load />
+    <Header currentPath={currentPath} client:load />
 
     <div
       class="mx-auto flex max-w-2xl flex-1 flex-col items-center justify-center space-y-8 py-8 text-center"

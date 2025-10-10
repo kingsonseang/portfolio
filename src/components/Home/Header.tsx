@@ -4,7 +4,13 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
-export default function Header() {
+export const navLinks = [
+  { href: "/", label: "Home", ariaLabel: "Go to my home page" },
+  { href: "/about", label: "About", ariaLabel: "Learn more about me" },
+  { href: "/projects", label: "Projects", ariaLabel: "View my projects" },
+];
+
+export default function Header({ currentPath }: { currentPath: string }) {
   const email = import.meta.env.PUBLIC_EMAIL || "me@kingsonseang.com";
   const cv = import.meta.env.PUBLIC_CV || "/cv";
   const [copied, setCopied] = React.useState(false);
@@ -75,12 +81,11 @@ export default function Header() {
         </div>
 
         <nav className="flex items-center gap-4 rounded-full bg-white/50 p-1">
-          <Button asChild variant="ghost" aria-label="About me">
-            <a href="/about">About</a>
-          </Button>
-          <Button asChild variant="ghost" aria-label="View my projects">
-            <a href="/projects">Projects</a>
-          </Button>
+          {navLinks.filter((link) => link.href !== currentPath).map((link, index) => (
+            <Button key={`nav_link_item_${index+1}`} asChild variant="ghost" aria-label={link.ariaLabel}>
+              <a href={link.href}>{link.label}</a>
+            </Button>
+          ))}
         </nav>
       </div>
 
