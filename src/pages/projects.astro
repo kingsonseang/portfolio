@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Home/Header";
 
 const email = import.meta.env.PUBLIC_EMAIL || "me@kingsonseang.com";
+const currentPath = Astro.url.pathname;
 ---
 
 <RootLayout>
@@ -12,7 +13,7 @@ const email = import.meta.env.PUBLIC_EMAIL || "me@kingsonseang.com";
       <div
         class="flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
       >
-        <Header client:load />
+        <Header currentPath={currentPath} client:load />
 
         <div class="container mx-auto max-w-4xl px-4 py-8">
           <!-- <div class='prose prose-lg dark:prose-invert max-w-none'>
