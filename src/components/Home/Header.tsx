@@ -61,9 +61,17 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4 rounded-full bg-white/50 p-1">
-          <Button asChild aria-label="view my cv">
-            <a href={cv}>CV</a>
-          </Button>
+          <ClickSpark
+            sparkColor="#000"
+            sparkSize={10}
+            sparkRadius={15}
+            sparkCount={8}
+            duration={400}
+          >
+            <Button asChild aria-label="view my cv">
+              <a href={cv}>CV</a>
+            </Button>
+          </ClickSpark>
         </div>
 
         <nav className="flex items-center gap-4 rounded-full bg-white/50 p-1">
