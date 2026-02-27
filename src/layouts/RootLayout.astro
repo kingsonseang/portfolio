@@ -3,39 +3,39 @@ import "@/styles/global.css";
 import { AstroFont } from "astro-font";
 import { LoadingProvider } from "@/providers/loading";
 
-const title = "Solomon Momoh | Software Engineer & Product Manager";
+const title = "Solomon Momoh | Software Engineer";
 const description =
   "Software Engineer & Product Manager specializing in building scalable digital products and leading cross-functional teams. Passionate about creating impactful solutions that drive business growth and user satisfaction.";
-const image = "/headshot.png";
+const image = "/images/headshot.png";
 const url = "https://kingsonseang.com";
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
-    <meta name='title' content={title} />
-    <meta name='description' content={description} />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
 
     <!-- Open Graph / Facebook -->
-    <meta property='og:type' content='website' />
-    <meta property='og:url' content={url} />
-    <meta property='og:title' content={title} />
-    <meta property='og:description' content={description} />
-    <meta property='og:image' content={image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
 
     <!-- Twitter -->
-    <meta property='twitter:card' content='summary_large_image' />
-    <meta property='twitter:url' content={url} />
-    <meta property='twitter:title' content={title} />
-    <meta property='twitter:description' content={description} />
-    <meta property='twitter:image' content={image} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
 
     <AstroFont
       config={[
@@ -60,7 +60,7 @@ const url = "https://kingsonseang.com";
       ]}
     />
   </head>
-  <body class='min-h-svh p-4 lg:p-6'>
+  <body class="min-h-svh p-4 lg:p-6">
     <LoadingProvider client:load>
       <slot />
     </LoadingProvider>

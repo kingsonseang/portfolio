@@ -2,52 +2,204 @@
 import RootLayout from "@/layouts/RootLayout.astro";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Home/Header";
-// import AboutContent from "@/content/about.mdx";
 
-const email = import.meta.env.PUBLIC_EMAIL || "me@kingsonseang.com";
 const currentPath = Astro.url.pathname;
+
+const experience = [
+  {
+    role: "Frontend Lead / Full-Stack Developer",
+    company: "Straqa",
+    url: "https://straqa.com",
+    period: "Jan 2025 – Present",
+    type: "Contract",
+    points: [
+      "Led frontend architecture for a multi-module enterprise platform covering ticketing, e-commerce, payments, and transportation",
+      "Improved frontend reliability across teams by enforcing shared abstractions and component patterns",
+      "Built internal admin dashboards and operational tools using TypeScript and Hono",
+    ],
+  },
+  {
+    role: "Full-Stack Web Developer",
+    company: "Spark Africa",
+    url: "https://sparkafrica.co",
+    period: "Nov 2024 – Present",
+    type: "Contract",
+    points: [
+      "Built production platforms for Africa Startup Festival and Africa Technology Expo with 10,000+ attendees",
+      "Designed a multi-tenant ticketing and exhibitor management system handling booths, CMS, and check-ins",
+      "Created Spark Portal — an attendee networking and matchmaking platform for founders, investors, and partners",
+    ],
+  },
+  {
+    role: "UI/UX Designer & Frontend Developer",
+    company: "Walkiya Limited",
+    url: "#",
+    period: "Dec 2022 – Aug 2023",
+    type: "Full-Time",
+    points: [
+      "Built and maintained government and enterprise portals using WordPress, JavaScript, and custom CRM tools",
+      "Designed an in-house CRM for construction project management, bookkeeping, and order processing",
+      "Translated business needs into usable interfaces working directly with non-technical staff",
+    ],
+  },
+  {
+    role: "Web Developer",
+    company: "Spark Africa",
+    url: "https://sparkafrica.co",
+    period: "Feb 2022 – Sep 2022",
+    type: "Contract",
+    points: [
+      "Developed early production platforms for Africa Startup Festival and Africa Technology Expo",
+      "Helped architect the initial multi-tenant event and ticketing system",
+    ],
+  },
+];
+
+const skills = {
+  Languages: ["TypeScript", "JavaScript", "Python", "SQL"],
+  Frontend: ["React", "Next.js", "Vue.js", "Nuxt", "Angular"],
+  Backend: ["Node.js", "Hono", "Flask", "FastAPI", "Elysia JS"],
+  Databases: ["PostgreSQL", "MongoDB", "MySQL", "Redis"],
+  "Infra / DevOps": ["AWS", "SST", "Docker", "Cloudflare", "Railway", "Vercel"],
+  Styling: ["Tailwind CSS", "Sass", "Radix UI", "Shadcn", "Styled Components"],
+  Testing: ["Jest", "Vitest", "Playwright"],
+};
 ---
 
 <RootLayout>
   <Layout>
-    <div class="max-h-[80svh] rounded-[4rem] bg-[hsl(0,0%,96%)]">
+    <div class="rounded-[4rem] bg-[#f5f5f5]">
+      <!-- Header card -->
       <div
-        class="flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
+        class="flex min-h-[60svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
       >
         <Header currentPath={currentPath} client:load />
 
-        <div class="container mx-auto max-w-4xl px-4 py-8">
-          <!-- <div class='prose prose-lg dark:prose-invert max-w-none'>
-            <AboutContent />
-          </div> -->
+        <div class="mx-auto mt-10 w-full max-w-3xl flex-1 py-4">
+          <p class="text-secondary/40 mb-2 text-xs font-medium tracking-widest uppercase">
+            About me
+          </p>
+          <h1 class="text-secondary mb-5 text-3xl leading-tight font-semibold md:text-4xl">
+            Frontend-focused engineer who<br class="hidden md:block" /> ships end-to-end.
+          </h1>
+          <p class="text-secondary/60 max-w-2xl text-base leading-relaxed">
+            I'm Solomon — a Full-Stack Software Engineer with 4+ years of experience building
+            production web applications. I specialise in TypeScript, React, and Node.js, and I've
+            shipped real products used by tens of thousands of people across events, enterprise, and
+            startup platforms.
+          </p>
+        </div>
+      </div>
 
-          <div class="flex flex-col items-center justify-center space-y-6 py-12 text-center">
-            <h1 class="text-secondary/80 text-4xl font-bold md:text-5xl">Coming Soon</h1>
-            <p class="text-secondary/60 max-w-2xl text-lg md:text-xl">
-              This page is currently under construction. In the meantime, feel free to reach out—I'd
-              love to chat over coffee, even virtually! ☕
-            </p>
-            <a
-              href={`mailto:${email}`}
-              class="bg-secondary/10 hover:bg-secondary/20 text-secondary/70 inline-flex items-center gap-2 rounded-full px-6 py-3 transition-colors duration-200"
-            >
-              Get in touch
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M7 7h10v10"></path>
-                <path d="M7 17 17 7"></path>
-              </svg>
-            </a>
+      <!-- Body sections -->
+      <div class="mx-auto max-w-4xl space-y-16 px-6 py-16 md:px-8 lg:px-10">
+        <!-- Work experience -->
+        <section>
+          <p class="text-secondary/40 mb-1 text-xs font-medium tracking-widest uppercase">
+            Experience
+          </p>
+          <h2 class="text-secondary mb-8 text-2xl font-semibold">Work History</h2>
+
+          <div class="space-y-8">
+            {
+              experience.map((job) => (
+                <div class="group relative rounded-3xl bg-white/60 p-6 transition-all duration-300 hover:bg-white/90">
+                  <div class="mb-3 flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <h3 class="text-secondary text-base font-semibold">{job.role}</h3>
+                      <a
+                        href={job.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-secondary/50 hover:text-secondary/80 text-sm transition-colors"
+                      >
+                        {job.company}
+                      </a>
+                    </div>
+                    <div class="flex shrink-0 items-center gap-2">
+                      <span class="text-secondary/30 rounded-full bg-black/5 px-2.5 py-1 text-xs">
+                        {job.type}
+                      </span>
+                      <span class="text-secondary/40 text-xs">{job.period}</span>
+                    </div>
+                  </div>
+                  <ul class="space-y-1.5">
+                    {job.points.map((point) => (
+                      <li class="text-secondary/60 flex items-start gap-2.5 text-sm leading-relaxed">
+                        <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black/20" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
           </div>
+        </section>
+
+        <!-- Skills -->
+        <section>
+          <p class="text-secondary/40 mb-1 text-xs font-medium tracking-widest uppercase">
+            Technical
+          </p>
+          <h2 class="text-secondary mb-8 text-2xl font-semibold">Skills</h2>
+
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {
+              Object.entries(skills).map(([category, items]) => (
+                <div class="rounded-3xl bg-white/60 p-5">
+                  <p class="text-secondary/40 mb-3 text-xs font-semibold tracking-wider uppercase">
+                    {category}
+                  </p>
+                  <div class="flex flex-wrap gap-1.5">
+                    {items.map((skill) => (
+                      <span class="text-secondary/60 rounded-full bg-black/5 px-2.5 py-1 text-xs">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Education + interests -->
+        <div class="grid gap-6 sm:grid-cols-2">
+          <section class="rounded-3xl bg-white/60 p-6">
+            <p class="text-secondary/40 mb-1 text-xs font-medium tracking-widest uppercase">
+              Education
+            </p>
+            <h2 class="text-secondary mb-4 text-lg font-semibold">Background</h2>
+            <p class="text-secondary/70 text-sm font-medium">Diploma in Computer Science</p>
+            <p class="text-secondary/45 text-sm">
+              Lincoln College of Science, Management & Technology
+            </p>
+            <p class="text-secondary/35 mt-1 text-xs">2021 – 2023</p>
+          </section>
+
+          <section class="rounded-3xl bg-white/60 p-6">
+            <p class="text-secondary/40 mb-1 text-xs font-medium tracking-widest uppercase">
+              Interests
+            </p>
+            <h2 class="text-secondary mb-4 text-lg font-semibold">What excites me</h2>
+            <div class="flex flex-wrap gap-1.5">
+              {
+                [
+                  "Web Animations",
+                  "Frontend Performance",
+                  "TypeScript",
+                  "AI Systems",
+                  "Frontend Architecture",
+                  "Cloud Platforms",
+                ].map((interest) => (
+                  <span class="text-secondary/60 rounded-full bg-black/5 px-2.5 py-1 text-xs">
+                    {interest}
+                  </span>
+                ))
+              }
+            </div>
+          </section>
         </div>
       </div>
     </div>
