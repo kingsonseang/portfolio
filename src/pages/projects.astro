@@ -2,53 +2,109 @@
 import RootLayout from "@/layouts/RootLayout.astro";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Home/Header";
+import { ProjectDialog } from "@/components/ProjectDialog";
+import { projects } from "@/data/projects";
 
-const email = import.meta.env.PUBLIC_EMAIL || "me@kingsonseang.com";
 const currentPath = Astro.url.pathname;
 ---
 
 <RootLayout>
   <Layout>
-    <div class="max-h-[80svh] rounded-[4rem] bg-[hsl(0,0%,96%)]">
+    <!-- Outer card shell matching home page design language -->
+    <div class="rounded-[4rem] bg-[#f5f5f5]">
       <div
-        class="flex min-h-[70svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
+        class="flex min-h-[50svh] flex-col space-y-10 rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
       >
         <Header currentPath={currentPath} client:load />
 
-        <div class="container mx-auto max-w-4xl px-4 py-8">
-          <!-- <div class='prose prose-lg dark:prose-invert max-w-none'>
-            <AboutContent />
-          </div> -->
+        <!-- Page heading -->
+        <div class="mx-auto mt-10 w-full max-w-5xl">
+          <p class="text-secondary/40 mb-1 text-xs font-medium tracking-widest uppercase">
+            Portfolio
+          </p>
+          <h1 class="text-secondary text-3xl font-semibold md:text-4xl">All Projects</h1>
+        </div>
+      </div>
 
-          <div class="flex flex-col items-center justify-center space-y-6 py-12 text-center">
-            <h1 class="text-secondary/80 text-4xl font-bold md:text-5xl">Coming Soon</h1>
-            <p class="text-secondary/60 max-w-2xl text-lg md:text-xl">
-              This page is currently under construction. In the meantime, feel free to reach out—I'd
-              love to chat over coffee, even virtually! ☕
-            </p>
-            <a
-              href={`mailto:${email}`}
-              class="bg-secondary/10 hover:bg-secondary/20 text-secondary/70 inline-flex items-center gap-2 rounded-full px-6 py-3 transition-colors duration-200"
-            >
-              Get in touch
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+      <!-- Projects grid -->
+      <div class="px-6 py-12 md:px-8 lg:px-10 xl:px-12">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            projects.map((project) => (
+              <button
+                data-project-id={project.id}
+                id={project.id}
+                aria-label={`View details for ${project.title}`}
+                class="project-card group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl bg-white/60 p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:bg-white/90 hover:shadow-xl hover:shadow-black/5"
               >
-                <path d="M7 7h10v10"></path>
-                <path d="M7 17 17 7"></path>
-              </svg>
-            </a>
-          </div>
+                {/* Accent bar */}
+                <div
+                  class="mb-5 h-1 w-10 rounded-full transition-all duration-300 group-hover:w-16"
+                  style={`background-color: ${project.color};`}
+                />
+
+                {/* Header */}
+                <div class="mb-3 flex items-start justify-between gap-2">
+                  <h2 class="text-secondary text-lg leading-tight font-semibold">
+                    {project.title}
+                  </h2>
+                  <span class="text-secondary/30 shrink-0 text-sm">{project.year}</span>
+                </div>
+
+                {/* Type badge */}
+                <span
+                  class="mb-4 inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-xs font-medium capitalize"
+                  style={`background-color: ${project.color}18; color: ${project.color};`}
+                >
+                  {project.type}
+                </span>
+
+                {/* Overview */}
+                <p class="text-secondary/55 mb-5 line-clamp-2 flex-1 text-sm leading-relaxed">
+                  {project.overview}
+                </p>
+
+                {/* Tech stack */}
+                <div class="flex flex-wrap gap-1.5">
+                  {project.tech_stack.slice(0, 4).map((tech) => (
+                    <span class="text-secondary/50 rounded-full bg-black/5 px-2.5 py-1 text-xs">
+                      {tech.name}
+                    </span>
+                  ))}
+                  {project.tech_stack.length > 4 && (
+                    <span class="text-secondary/30 rounded-full bg-black/5 px-2.5 py-1 text-xs">
+                      +{project.tech_stack.length - 4}
+                    </span>
+                  )}
+                </div>
+
+                {/* Footer */}
+                <div class="mt-5 flex items-center gap-1 border-t border-black/5 pt-4">
+                  <span class="text-secondary/35 text-xs">{project.url}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-secondary/25 ml-auto opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                  >
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </div>
+              </button>
+            ))
+          }
         </div>
       </div>
     </div>
+
+    <!-- Dialog island — renders project detail modal client-side -->
+    <ProjectDialog projects={projects} client:load />
   </Layout>
 </RootLayout>

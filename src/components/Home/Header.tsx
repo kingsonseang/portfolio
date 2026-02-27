@@ -8,6 +8,7 @@ export const navLinks = [
   { href: "/", label: "Home", ariaLabel: "Go to my home page" },
   { href: "/about", label: "About", ariaLabel: "Learn more about me" },
   { href: "/projects", label: "Projects", ariaLabel: "View my projects" },
+  { href: "/contact", label: "Contact", ariaLabel: "Contact me" },
 ];
 
 export default function Header({ currentPath }: { currentPath: string }) {

@@ -1,122 +1,65 @@
-# Solomon Momoh's Portfolio
+# Solomon Momoh — Portfolio
 
-A modern, responsive portfolio website built with Astro, React, and Tailwind CSS. This portfolio showcases my work, skills, and experience in building digital products.
+> [kingsonseng.space](https://kingsonseang.space) · Full-Stack Software Engineer
 
-## 🚀 Features
+A modern portfolio built with **Astro**, **React**, **Tailwind CSS v4**, **Framer Motion**, and **GSAP** — featuring a hand-drawn SVG logo loader, animated project cards, a project detail dialog, and Calendly scheduling integration.
 
-- 🎨 Modern and clean design
-- 📱 Fully responsive layout
-- ⚡ Fast performance with Astro
-- 🎭 Smooth animations with Framer Motion
-- 🎯 Interactive UI components
-- 🌈 Beautiful gradients and transitions
-- 🎪 Custom UI components with shadcn/ui
+## ✨ Highlights
 
-## 🛠️ Tech Stack
+- **GSAP SVG loader** — draws the logo signature stroke-by-stroke then wipes off the screen
+- **Project cards & dialog** — Framer Motion animated modal with full project details
+- **Scroll entrance animations** — sections fade + slide in on scroll post-loader
+- **Calendly contact page** — inline booking widget
+- **Fully responsive** — mobile-first layout
 
-- [Astro](https://astro.build) - The web framework for content-driven websites
-- [React](https://reactjs.org) - UI library for building user interfaces
-- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
-- [Framer Motion](https://www.framer.com/motion/) - Animation library
-- [shadcn/ui](https://ui.shadcn.com) - Re-usable components built with Radix UI and Tailwind CSS
-- [Lucide Icons](https://lucide.dev) - Beautiful & consistent icons
+## 🛠 Stack
 
-## 🏗️ Project Structure
-
-```
-/
-├── public/          # Static assets
-├── src/
-│   ├── components/  # React & Astro components
-│   ├── layouts/     # Layout components
-│   ├── lib/         # Utility functions
-│   ├── pages/       # Astro pages
-│   └── styles/      # Global styles
-└── package.json
-```
+| Layer      | Technology                                                                 |
+| ---------- | -------------------------------------------------------------------------- |
+| Framework  | [Astro](https://astro.build)                                               |
+| UI Library | [React](https://react.dev)                                                 |
+| Styling    | [Tailwind CSS v4](https://tailwindcss.com)                                 |
+| Animations | [GSAP](https://gsap.com) + [Framer Motion](https://www.framer.com/motion/) |
+| Icons      | [Lucide React](https://lucide.dev)                                         |
+| Scheduling | [Calendly](https://calendly.com)                                           |
 
 ## 🚀 Getting Started
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/kingsonseang/portfolio.git
-   ```
-
-2. Install dependencies:
-   ```bash
-   pnpm install
-   ```
-
-3. Start the development server:
-   ```bash
-   pnpm dev
-   ```
-
-4. Build for production:
-   ```bash
-   pnpm build
-   ```
-
-## 🎨 Customization
-
-- Update personal information in `src/components/Home/Header.tsx`
-- Modify styles in `src/styles/global.css`
-- Add new components in `src/components`
-- Update content in `src/pages`
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👋 Connect
-
-- [GitHub](https://github.com/kingsonseang)
-- [LinkedIn](https://www.linkedin.com/in/solomon-momoh/)
-- [Twitter](https://twitter.com/kingsonseang)
-
-```sh
-pnpm create astro@latest -- --template basics
+```bash
+git clone https://github.com/kingsonseang/portfolio.git
+cd portfolio
+pnpm install
+pnpm dev        # → http://localhost:4321
+pnpm build      # production build
+pnpm preview    # preview production build
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 📁 Structure
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/
+│   ├── Home/          # Hero, Header, RecentProjects, Clients
+│   ├── ui/            # PageLoader, AnimatedButton, etc.
+│   ├── AnimatedSection.tsx
+│   └── ProjectDialog.tsx
+├── data/
+│   └── projects.ts    # Single source of truth for all projects
+├── pages/
+│   ├── index.astro
+│   ├── projects.astro
+│   ├── about.astro
+│   └── contact.astro
+└── providers/
+    └── loading.tsx    # Orchestrates the GSAP loader lifecycle
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 📬 Connect
 
-## 🧞 Commands
+[![Portfolio](https://img.shields.io/badge/Portfolio-kingsonseang.space-242424?style=flat-square)](https://kingsonseang.space)
+[![Email](https://img.shields.io/badge/Email-kingsonseang%40gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:kingsonseang@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-solomon--momoh-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/solomon-momoh)
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+MIT License © Solomon Momoh

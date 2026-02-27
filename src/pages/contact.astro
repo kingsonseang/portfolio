@@ -1,0 +1,41 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Home/Header";
+
+const currentPath = Astro.url.pathname;
+---
+
+<RootLayout>
+  <Layout>
+    <div class="rounded-[4rem] bg-[#f5f5f5]">
+      <div
+        class="flex min-h-[70svh] flex-col rounded-[4rem] bg-[#ebebeb] p-6 md:p-8 lg:p-10 xl:p-12"
+      >
+        <Header currentPath={currentPath} client:load />
+
+        <div class="mx-auto mt-12 flex w-full max-w-3xl flex-1 flex-col justify-center space-y-6">
+          <div class="">
+            <p class="text-secondary/40 mb-2 text-xs font-medium tracking-widest uppercase">
+              Get in touch
+            </p>
+            <h1 class="text-secondary mb-3 text-3xl font-semibold md:text-4xl">Let's talk</h1>
+            <p class="text-secondary/55 mb-10 max-w-md text-base leading-relaxed">
+              Book a time on my calendar and let's connect — whether it's about a project, a role,
+              or just a chat.
+            </p>
+          </div>
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/kingsonseang"
+            style="min-width:320px;height:700px;"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </Layout>
+</RootLayout>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async
+></script>
