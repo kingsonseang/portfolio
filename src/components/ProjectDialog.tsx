@@ -58,15 +58,6 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
     };
   }, [selected]);
 
-  const techTypeColor: Record<string, string> = {
-    language: "#6366f1",
-    framework: "#10b981",
-    service: "#f59e0b",
-    database: "#ef4444",
-    styling: "#8b5cf6",
-    tool: "#06b6d4",
-  };
-
   return (
     <AnimatePresence>
       {selected && (
@@ -122,15 +113,16 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
               {/* Accent top bar */}
               <div
                 style={{
-                  height: "4px",
+                  height: "1px",
                   borderRadius: "2rem 2rem 0 0",
-                  background: selected.color,
+                  background: "rgba(0,0,0,0.08)",
                 }}
               />
 
               <div style={{ padding: "2rem" }}>
                 {/* Close button */}
                 <button
+                  type="button"
                   onClick={() => setSelectedId(null)}
                   aria-label="Close project details"
                   style={{
@@ -160,6 +152,7 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
+                    <title>Icon</title>
                     <path d="M18 6 6 18" />
                     <path d="m6 6 12 12" />
                   </svg>
@@ -173,12 +166,13 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
                       fontWeight: 600,
                       textTransform: "uppercase",
                       letterSpacing: "0.1em",
-                      color: selected.color,
+                      color: "rgba(36,36,36,0.4)",
                       marginBottom: "0.5rem",
                       display: "block",
                     }}
                   >
-                    {selected.type} · {selected.year}
+                    {selected.category === "personal" ? "Personal Project" : "Client Work"} ·{" "}
+                    {selected.year}
                   </span>
                   <h2
                     style={{
@@ -191,72 +185,141 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
                   >
                     {selected.title}
                   </h2>
-                  <a
-                    href={`https://${selected.url}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      fontSize: "0.8rem",
-                      color: "rgba(36,36,36,0.45)",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.3rem",
-                      textDecoration: "none",
-                    }}
-                  >
-                    {selected.url}
-                    <svg
-                      width="11"
-                      height="11"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  {selected.url && (
+                    <a
+                      href={
+                        selected.url.startsWith("http") ? selected.url : `https://${selected.url}`
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontSize: "0.8rem",
+                        color: "rgba(36,36,36,0.45)",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.3rem",
+                        textDecoration: "none",
+                      }}
                     >
-                      <path d="M7 7h10v10" />
-                      <path d="M7 17 17 7" />
-                    </svg>
-                  </a>
+                      {selected.url}
+                      <svg
+                        width="11"
+                        height="11"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <title>Icon</title>
+                        <path d="M7 7h10v10" />
+                        <path d="M7 17 17 7" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
 
-                <hr style={{ margin: "1.25rem 0", border: "none", borderTop: "1px solid rgba(0,0,0,0.07)" }} />
+                <hr
+                  style={{
+                    margin: "1.25rem 0",
+                    border: "none",
+                    borderTop: "1px solid rgba(0,0,0,0.07)",
+                  }}
+                />
 
                 {/* Role */}
                 <div style={{ marginBottom: "1.25rem" }}>
-                  <p style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(36,36,36,0.4)", marginBottom: "0.3rem" }}>
+                  <p
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      color: "rgba(36,36,36,0.4)",
+                      marginBottom: "0.3rem",
+                    }}
+                  >
                     Role
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "#242424", fontWeight: 500 }}>{selected.role}</p>
+                  <p style={{ fontSize: "0.9rem", color: "#242424", fontWeight: 500 }}>
+                    {selected.role}
+                  </p>
                 </div>
 
                 {/* Overview */}
                 <div style={{ marginBottom: "1.25rem" }}>
-                  <p style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(36,36,36,0.4)", marginBottom: "0.3rem" }}>
+                  <p
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      color: "rgba(36,36,36,0.4)",
+                      marginBottom: "0.3rem",
+                    }}
+                  >
                     Overview
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "rgba(36,36,36,0.7)", lineHeight: 1.6 }}>{selected.overview}</p>
+                  <p style={{ fontSize: "0.9rem", color: "rgba(36,36,36,0.7)", lineHeight: 1.6 }}>
+                    {selected.overview}
+                  </p>
                 </div>
 
                 {/* Challenge */}
                 <div style={{ marginBottom: "1.25rem" }}>
-                  <p style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(36,36,36,0.4)", marginBottom: "0.3rem" }}>
+                  <p
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      color: "rgba(36,36,36,0.4)",
+                      marginBottom: "0.3rem",
+                    }}
+                  >
                     Challenge
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "rgba(36,36,36,0.7)", lineHeight: 1.6 }}>{selected.challenge}</p>
+                  <p style={{ fontSize: "0.9rem", color: "rgba(36,36,36,0.7)", lineHeight: 1.6 }}>
+                    {selected.challenge}
+                  </p>
                 </div>
 
                 {/* Highlights */}
                 <div style={{ marginBottom: "1.5rem" }}>
-                  <p style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(36,36,36,0.4)", marginBottom: "0.75rem" }}>
+                  <p
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      color: "rgba(36,36,36,0.4)",
+                      marginBottom: "0.75rem",
+                    }}
+                  >
                     Key Highlights
                   </p>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: 0,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.5rem",
+                    }}
+                  >
                     {selected.highlights.map((h, i) => (
                       <li
                         key={i}
-                        style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", fontSize: "0.875rem", color: "rgba(36,36,36,0.7)", lineHeight: 1.5 }}
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: "0.6rem",
+                          fontSize: "0.875rem",
+                          color: "rgba(36,36,36,0.7)",
+                          lineHeight: 1.5,
+                        }}
                       >
                         <span
                           style={{
@@ -264,7 +327,7 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
                             width: "6px",
                             height: "6px",
                             borderRadius: "50%",
-                            background: selected.color,
+                            background: "rgba(36,36,36,0.3)",
                             flexShrink: 0,
                           }}
                         />
@@ -276,7 +339,16 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
 
                 {/* Tech stack */}
                 <div>
-                  <p style={{ fontSize: "0.7rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(36,36,36,0.4)", marginBottom: "0.75rem" }}>
+                  <p
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      color: "rgba(36,36,36,0.4)",
+                      marginBottom: "0.75rem",
+                    }}
+                  >
                     Tech Stack
                   </p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
@@ -288,8 +360,8 @@ export function ProjectDialog({ projects }: ProjectDialogProps) {
                           fontWeight: 500,
                           padding: "0.3rem 0.75rem",
                           borderRadius: "999px",
-                          background: `${techTypeColor[tech.type] ?? "#6366f1"}18`,
-                          color: techTypeColor[tech.type] ?? "#6366f1",
+                          background: "rgba(0,0,0,0.05)",
+                          color: "rgba(36,36,36,0.6)",
                         }}
                       >
                         {tech.name}

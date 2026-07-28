@@ -83,6 +83,7 @@ export default function Header({ currentPath }: { currentPath: string }) {
 
         <nav className="flex items-center gap-4 rounded-full bg-white/50 p-1">
           {navLinks.filter((link) => link.href !== currentPath).map((link, index) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: allow index as key for nav links
             <Button key={`nav_link_item_${index+1}`} asChild variant="ghost" aria-label={link.ariaLabel}>
               <a href={link.href}>{link.label}</a>
             </Button>
@@ -92,10 +93,11 @@ export default function Header({ currentPath }: { currentPath: string }) {
 
       <div className="flex space-x-3.5 max-md:hidden">
         {socials?.map((social, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={social.platform}>
             <motion.a
               href={social.url}
               target="_blank"
+              rel="noopener noreferrer"
               className="relative"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -124,9 +126,10 @@ export default function Header({ currentPath }: { currentPath: string }) {
       <div className="flex items-center gap-6 md:hidden">
         {socials.map((social, index) => (
           <motion.a
-            key={index}
+            key={social.platform}
             href={social.url}
             target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Visit my ${social.platform} profile`}
             className="text-secondary/50 hover:text-secondary/70 transition-colors [&_svg]:stroke-1"
             whileHover={{ scale: 1.1, y: -2 }}

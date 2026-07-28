@@ -7,6 +7,7 @@ export type LogoItem =
       href?: string;
       title?: string;
       ariaLabel?: string;
+      invert?: boolean;
     }
   | {
       src: string;
@@ -17,6 +18,7 @@ export type LogoItem =
       sizes?: string;
       width?: number;
       height?: number;
+      invert?: boolean;
     };
 
 export interface LogoLoopProps {
@@ -69,7 +71,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
-  }, dependencies);
+  }, [...dependencies]);
 };
 
 const useImageLoader = (
@@ -263,6 +265,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           loading="lazy"
           decoding="async"
           draggable={false}
+          style={{ filter: item.invert ? 'invert(1)' : 'none' }}
         />
       );
 
