@@ -1,61 +1,147 @@
 ---
- import '../styles/global.css'
- import Github from '../components/icons/github.astro'
- import XLogo from '../components/icons/x-logo.astro'
- import LinkedIn from '../components/icons/linkedin.astro'
- import { Image } from 'astro:assets';
- import bannerImage from '../assets/banner-hand-drawn.jpeg'
+import "../styles/global.css";
+import Github from "../components/icons/github.astro";
+import XLogo from "../components/icons/x-logo.astro";
+import LinkedIn from "../components/icons/linkedin.astro";
+import Calendly from "../components/icons/calendly.astro";
+import { Image } from "astro:assets";
+import bannerImage from "../assets/banner-hand-drawn.jpeg";
+import headshotImage from "../assets/headshot.webp";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <!-- iOS / Apple Support -->
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <!-- Android / Web App Manifest -->
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Solomon Momoh</title>
-	</head>
-	<body class="antialiased">
-		<main class="max-w-3xl mx-auto p-4 prose">
-		    <div>
-				<Image src={bannerImage} alt="banner" class="w-full" />
-			</div>
-    		<div>
-    			<h1>Hi, I'm Solomon.</h1>
-    			<p>I'm a software engineer who build stuff. currently exploring AI engineering as my next career path, I currently specialize in building full stack web applications.</p>
-    		</div>
-            <div></div>
-            <div>
-                <div>
-                    <h2>Work</h2>
-                    <p>I currently work at <a href="https://sparkmarkets.co">Spark Africa</a> an Infrastructure & Full Stack Engineer, before that I worked at <a href="https://usestraqa.com">Straqa</a> as a full stack engineer and later Lead frontend engineer and a couple of other places as well as a bit of freelance work</p>
-                </div>
-                <div>
-                    <a href="/cv">Read my cv</a>
-                </div>
-            </div>
-    		<div>
-       			<div>
-                    <h2>#lets connect</h2>
-                    <p>If you're hiring, or just want to chat you could reach out to me on any of these platforms!</p>
-                </div>
-                <div>
-                    {[
-                        { content: 'solomon-momoh', icon: LinkedIn, title: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/solomon-momoh' },
-                        { content: '@kingsonseang', icon: Github, title: 'GitHub Profile', url: 'https://github.com/kingsonseang' },
-                        { content: '@kingsonseang', icon: XLogo, title: 'X Profile', url: 'https://twitter.com/kingsonseang' },
-                    ].map((item) => (
-                        <a href={item.url} title={item.title} class="flex items-center gap-1.5"><item.icon class="size-4" /><span>{item.content}</span></a>
-                    ))}
-                </div>
-    		</div>
-		</main>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <!-- iOS / Apple Support -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Android / Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Solomon Momoh is a software engineer based in Nigeria, building web products, backend systems, and production infrastructure."
+    />
+    <link rel="canonical" href="https://solomonmomoh.space/" />
+    <title>Solomon Momoh</title>
+  </head>
+  <body class="antialiased">
+    <main class="mx-auto w-full max-w-3xl sm:px-6 py-2">
+      <div class="relative mb-16">
+        <Image
+          src={bannerImage}
+          alt="ai generated banner of a hand drawn landscape inspired by gravity falls and adventure time with mountains as macintosh computers in the background"
+          class="h-32 w-full rounded-xl object-cover sm:h-44"
+        />
+
+        <div class="absolute -bottom-12 right-5 size-28 overflow-hidden rounded-full bg-app-bg p-1 sm:right-8 sm:size-32">
+          <Image
+            src={headshotImage}
+            alt="Solomon Momoh"
+            class="h-full w-full object-cover rounded-full grayscale-25"
+          />
+        </div>
+      </div>
+      <div class="prose pb-10 px-4 sm:px-8">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight">hi, i'm solomon 👋</h1>
+          <p>
+            i'm a software engineer based in 🇳🇬 nigeria. i build web products, work across the
+            stack, and care about the systems that keep them running.
+          </p>
+        </div>
+        <div>
+          <div>
+            <h2>a little about my work</h2>
+            <p>
+              i've worked on fintech products, payment integrations, event platforms, internal
+              tools, and production infrastructure. recently, i helped cut infrastructure costs by
+              71% and deployment times from around 11 minutes to ~2.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h2>things i'm interested in</h2>
+            <ul class="marker:text-app-muted">
+              <li>building useful products with typescript</li>
+              <li>backend systems and developer tools</li>
+              <li>AI engineering and practical uses for llms</li>
+              <li>Effect-TS</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h2>where i've worked</h2>
+            <p>
+              i currently work at{" "}
+              <a href="https://sparkmarkets.co" target="_blank" rel="noopener noreferrer">
+                spark
+              </a>{" "}
+              as an infrastructure & full-stack engineer. before that, i worked at{" "}
+              <a href="https://usestraqa.com" target="_blank" rel="noopener noreferrer">
+                straqa
+              </a>
+              , where i went from full-stack development to leading frontend work. i've also worked
+              across a few other teams and taken on freelance projects along the way.
+            </p>
+          </div>
+          <div class="text-right">
+            <a href="/cv">Read my cv</a>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h2>let's connect</h2>
+            <p>
+              if you're hiring, working on something interesting, or just want to chat, feel free to
+              reach out.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3.5">
+            {[
+              {
+                content: "solomon-momoh",
+                icon: LinkedIn,
+                title: "LinkedIn Profile",
+                url: "https://www.linkedin.com/in/solomon-momoh",
+              },
+              {
+                content: "@kingsonseang",
+                icon: Github,
+                title: "GitHub Profile",
+                url: "https://github.com/kingsonseang",
+              },
+              {
+                content: "@kingsonseang",
+                icon: XLogo,
+                title: "X Profile",
+                url: "https://twitter.com/kingsonseang",
+              },
+              {
+                content: "30min",
+                icon: Calendly,
+                title: "Calendly 30min Meeting",
+                url: "https://calendly.com/kingsonseang/30min",
+              },
+            ].map((item) => (
+              <a
+                href={item.url}
+                title={item.title}
+                class="flex items-center gap-1.5 no-underline text-sm"
+              >
+                <item.icon class="size-4" />
+                <span>{item.content}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
