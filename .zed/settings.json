@@ -1,0 +1,17 @@
+{
+  "format_on_save": "on",
+
+  "languages": {
+    "JavaScript": { "formatter": "language_server" },
+    "TypeScript": { "formatter": "language_server" },
+    "CSS": { "formatter": "language_server" },
+    "Astro": {
+      "formatter": {
+        "external": {
+          "command": "npx",
+          "arguments": ["prettier", "--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    }
+  }
+}

@@ -1,1 +1,47 @@
 @import "tailwindcss";
+@import "@fontsource-variable/onest";
+@import "@fontsource/shadows-into-light-two";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --font-sans: 'Onest Variable', 'Onest', sans-serif;
+    --font-handwriting: 'Shadows Into Light Two', cursive;
+
+    /* Semantic Color Tokens */
+    --color-app-bg: var(--app-bg);
+    --color-app-card: var(--app-card);
+    --color-app-text: var(--app-text);
+    --color-app-muted: var(--app-muted);
+    --color-app-border: var(--app-border);
+    --color-app-accent: var(--app-accent);
+    --color-app-highlight: var(--app-highlight);
+}
+
+:root {
+    --app-bg: #F9F8F3;
+    --app-card: #FFFFFF;
+    --app-text: #2B2B2B;
+    --app-muted: #666666;
+    --app-border: #2B2B2B;
+    --app-accent: #FFF3C4;
+    --app-highlight: #E2DFD7;
+}
+
+body.anime,
+.anime {
+    --app-bg: #FCE9E6;
+    --app-card: rgba(255, 255, 255, 0.85);
+    --app-text: #3A2E4D;
+    --app-muted: #5C4A75;
+    --app-border: #70D6D1;
+    --app-accent: #D85C6E;
+    --app-highlight: #F0CD68;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-app-bg);
+    color: var(--color-app-text);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
