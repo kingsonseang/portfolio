@@ -1,0 +1,135 @@
+---
+import Angular from "./stack-logos/angular.astro";
+import Drizzle from "./stack-logos/drizzle.astro";
+import Django from "./stack-logos/django.astro";
+import Docker from "./stack-logos/docker.astro";
+import CloudflareWorker from "./stack-logos/cloudflare-worker.astro";
+import EffectTS from "./stack-logos/effect-ts.astro";
+import Electron from "./stack-logos/electron.astro";
+import Elysia from "./stack-logos/elysia.astro";
+import ExpressJS from "./stack-logos/express-js.astro";
+import FastAPI from "./stack-logos/fast-api.astro";
+import Figma from "./stack-logos/figma.astro";
+import Flask from "./stack-logos/flask.astro";
+import JavaScript from "./stack-logos/javascript.astro";
+import MCP from "./stack-logos/mcp.astro";
+import MongoDB from "./stack-logos/mongodb.astro";
+import NestJS from "./stack-logos/nest-js.astro";
+import NextJS from "./stack-logos/next-js.astro";
+import NX from "./stack-logos/nx.astro";
+import Nuxt from "./stack-logos/nuxt.astro";
+import OpenCode from "./stack-logos/opencode.astro";
+import Playwright from "./stack-logos/playwright.astro";
+import Python from "./stack-logos/python.astro";
+import Redis from "./stack-logos/redis.astro";
+import Rust from "./stack-logos/rust.astro";
+import SST from "./stack-logos/sst.astro";
+import Stripe from "./stack-logos/stripe.astro";
+import Tailwind from "./stack-logos/tailwind.astro";
+import TRPC from "./stack-logos/trpc.astro";
+import TypeScript from "./stack-logos/typescript.astro";
+import Go from "./stack-logos/go.astro";
+import Turborepo from "./stack-logos/turborepo.astro";
+import Zed from "./stack-logos/zed.astro";
+import Bun from "./stack-logos/bun.astro";
+
+const categories = [
+  {
+    name: "languages",
+    technologies: [
+      { name: "TypeScript", icon: TypeScript },
+      { name: "JavaScript", icon: JavaScript },
+      { name: "Python", icon: Python },
+      { name: "Go", icon: Go },
+      { name: "Rust", icon: Rust },
+    ],
+  },
+  {
+    name: "frontend",
+    technologies: [
+      { name: "Next.js", icon: NextJS },
+      { name: "Nuxt", icon: Nuxt },
+      { name: "Angular", icon: Angular },
+      { name: "Tailwind CSS", icon: Tailwind },
+      { name: "Figma", icon: Figma },
+    ],
+  },
+  {
+    name: "backend & APIs",
+    technologies: [
+      { name: "Express", icon: ExpressJS },
+      { name: "NestJS", icon: NestJS },
+      { name: "Elysia", icon: Elysia },
+      { name: "Hono", icon: Elysia },
+      { name: "FastAPI", icon: FastAPI },
+      { name: "Flask", icon: Flask },
+      { name: "Django", icon: Django },
+      { name: "tRPC", icon: TRPC },
+    ],
+  },
+  {
+    name: "data",
+    technologies: [
+      { name: "Drizzle", icon: Drizzle },
+      { name: "MongoDB", icon: MongoDB },
+      { name: "Redis", icon: Redis },
+    ],
+  },
+  {
+    name: "infrastructure & tooling",
+    technologies: [
+      { name: "Docker", icon: Docker },
+      { name: "Cloudflare Workers", icon: CloudflareWorker },
+      { name: "SST", icon: SST },
+      { name: "Nx", icon: NX },
+      { name: "Bun", icon: Bun },
+      { name: "Turborepo", icon: Turborepo },
+      { name: "Playwright", icon: Playwright },
+      { name: "Electron", icon: Electron },
+    ],
+  },
+  {
+    name: "AI & developer tools",
+    technologies: [
+      { name: "Effect-TS", icon: EffectTS },
+      { name: "MCP", icon: MCP },
+      { name: "OpenCode", icon: OpenCode },
+      { name: "Zed", icon: Zed },
+    ],
+  },
+  {
+    name: "payments",
+    technologies: [{ name: "Stripe", icon: Stripe }],
+  },
+];
+---
+
+<div class="flex flex-wrap items-center gap-4">
+  {categories
+    .flatMap((category) => category.technologies)
+    .map((tech) => (
+      <tech.icon title={tech.name} class="size-8 shrink-0" />
+    ))}
+</div>
+
+<!-- <div class="space-y-4">
+  {categories.map((category) => (
+    <div class="space-y-2">
+      <h3 class="text-xs font-medium lowercase tracking-wide text-app-muted">
+        {category.name}
+      </h3>
+
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+        {category.technologies.map((tech) => (
+          <div
+            class="inline-flex items-center gap-1.5 text-xs text-app-muted"
+            title={tech.name}
+          >
+            <tech.icon class="size-4 shrink-0" />
+            <span>{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</div> -->
